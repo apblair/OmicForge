@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  jupyterlab:
+    build: .
+    container_name: jupyterlab-dash
+    ports:
+      - "8889:8888"  # JupyterLab
+      - "8060:8060"  # Dash App
+    volumes:
+      - ./workspace:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
